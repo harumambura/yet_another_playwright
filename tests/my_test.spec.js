@@ -1,10 +1,13 @@
 const { test, expect } = require("@playwright/test");
+const { beforeEach } = require("node:test");
 
-test('should perform login', async({page}) => {
-    await page.goto("https://www.saucedemo.com/");
+test.beforeEach(async ({page}) =>{
+    await page.goto("/");
     await page.locator("#user-name").fill("standard_user");
     await page.locator("#password").fill("secret_sauce");
     await page.locator("#login-button").click();
+})
+test('should perform login', async({page}) => {    
     await expect(page.locator(".title")).toContainText("Products");
     await expect(page.getByText('Products')).toBeVisible();
     await expect(page.locator('#shopping_cart_container a')).toBeVisible();
@@ -12,11 +15,7 @@ test('should perform login', async({page}) => {
     expect(products.length).toBeGreaterThan(0);
 })
 
-test("should add product to the cart", async({page}) => {
-    await page.goto("https://www.saucedemo.com/");
-    await page.locator("#user-name").fill("standard_user");
-    await page.locator("#password").fill("secret_sauce");
-    await page.locator("#login-button").click();
+test("should add product to the cart", async({page}) => {   
     const firstItemName = await page.locator(".inventory_item_name").first().textContent();
     await page.locator(".btn_primary").first().click();
     await expect(page.locator(".shopping_cart_badge")).toHaveText("1");

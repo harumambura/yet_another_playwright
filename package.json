@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "playwright test repo",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "mytest": "playwright test tests/my_test.spec.js",
+    "report": "playwright show-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
