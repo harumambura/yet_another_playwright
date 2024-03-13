@@ -1,5 +1,4 @@
 const { test, expect } = require("@playwright/test");
-const { beforeEach } = require("node:test");
 
 test.beforeEach(async ({page}) =>{
     await page.goto("/");
