@@ -1,0 +1,17 @@
+{
+  "name": "yet_another_playwright",
+  "version": "1.0.0",
+  "description": "playwright test repo",
+  "main": "index.js",
+  "scripts": {
+    "mytest": "playwright test tests/my_test.spec.js",
+    "report": "playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.11.26"
+  }
+}
